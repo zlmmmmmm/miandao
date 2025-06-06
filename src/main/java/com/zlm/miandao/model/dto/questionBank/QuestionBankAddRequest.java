@@ -4,12 +4,14 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * 创建题库请求
+ *
+ * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
+ * @from <a href="https://www.code-nav.cn">编程导航学习圈</a>
+ */
 @Data
-public class QuestionBankEditRequest implements Serializable {
-    /**
-     * id
-     */
-    private Long id;
+public class QuestionBankAddRequest implements Serializable {
 
     /**
      * 标题
