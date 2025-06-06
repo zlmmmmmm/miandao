@@ -8,7 +8,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zlm.miandao.common.ErrorCode;
 import com.zlm.miandao.constant.CommonConstant;
 import com.zlm.miandao.exception.BusinessException;
-import com.zlm.miandao.mapper.UserMapper;
 import com.zlm.miandao.model.dto.user.UserQueryRequest;
 import com.zlm.miandao.model.entity.User;
 import com.zlm.miandao.model.enums.UserRoleEnum;
@@ -26,6 +25,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+import com.zlm.miandao.mapper.UserMapper;
 
 /**
  * 用户服务实现
