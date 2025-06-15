@@ -14,6 +14,7 @@ import com.zlm.miandao.model.dto.question.QuestionAddRequest;
 import com.zlm.miandao.model.dto.question.QuestionEditRequest;
 import com.zlm.miandao.model.dto.question.QuestionQueryRequest;
 import com.zlm.miandao.model.dto.question.QuestionUpdateRequest;
+import com.zlm.miandao.model.dto.questionBankQuestion.QuestionBatchDeleteRequest;
 import com.zlm.miandao.model.entity.Question;
 import com.zlm.miandao.model.entity.User;
 import com.zlm.miandao.model.vo.QuestionVO;
@@ -250,6 +251,15 @@ public class QuestionController {
         ThrowUtils.throwIf(size > 200, ErrorCode.PARAMS_ERROR);
         Page<Question> questionPage = questionService.searchFromEs(questionQueryRequest);
         return ResultUtils.success(questionService.getQuestionVOPage(questionPage, request));
+    }
+
+    @PostMapping("/delete/batch")
+    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
+    public BaseResponse<Boolean> batchDeleteQuestions(@RequestBody QuestionBatchDeleteRequest questionBatchDeleteRequest,
+                                                      HttpServletRequest request) {
+        ThrowUtils.throwIf(questionBatchDeleteRequest == null, ErrorCode.PARAMS_ERROR);
+        questionService.batchDeleteQuestions(questionBatchDeleteRequest.getQuestionIdList());
+        return ResultUtils.success(true);
     }
 
 }
